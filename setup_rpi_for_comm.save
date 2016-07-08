@@ -1,0 +1,22 @@
+sudo apt-get install python-dev
+
+#make sure to COMMENT the lines with spi-bcm2708 and i2c-bcm2708 modules
+sudo vim /etc/modprobe.d/raspi-blacklist.conf
+
+#be sure to have i2c-dev module in the /etc/module
+sudo vim /etc/modules
+
+sudo adduser pi i2c
+sudo apt-get update
+
+#reboot:
+sudo shutdown -r now
+
+#get the GPIO software
+wget https://pypi.python.org/packages/source/R/RPi.GPIO/RPi.GPIO-0.5.3a.tar.gz
+
+#untar it and install it
+tar -xzvf RPi.GPIO-0.5.3a.tar.gz
+cd RPi.GPIO-0.5.3a/
+sudo python setup.py install
+sudo apt-get install i2c-tools
